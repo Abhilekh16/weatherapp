@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+		{%for weatherElement in weather%}
+		<div class="card col-m-1 col-md-2 m-1">
+			<div class="card-title">
+				{{weatherElement['city']}}
+			</div>
+			<img class="card-img-top" src="{{weatherElement['img']}}" alt="Card image"/>
+			<div class="card-body">
+				Temperature
+				<p class="card-text">{{weatherElement['forecast']['temperature']}}</p>
+				Humidity
+				<p class="card-text">{{weatherElement['forecast']['humidity']}}</p>
+			</div>
+		</div>
+		{%endfor%}
+	</div>
+	</div>
+	<table class="table table-bordered">
+		<thead>
+      <tr>
+        <th>City</th>
+        <th>Temperature</th>
+        <th>Humidity</th>
+        <th>Unit</th>
+        <th>Update(0/1)</th>
+      </tr>
+    </thead>
+    <tbody>
+    	{%for weatherElement in weather%}
+			<tr>
+				<td>{{weatherElement['city']}}</td>
+				<td>{{weatherElement['forecast']['temperature']}}</td>
+				<td>{{weatherElement['forecast']['humidity']}}</td>
+				<td>{{weatherElement['forecast']['unit']}}</td>
+				<td>{{weatherElement['forecast']['update']}}</td>
+			</tr>
+		
+		{%endfor%}
+    </tbody>
+	</table>
+</body>
+</html>
